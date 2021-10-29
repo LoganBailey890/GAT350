@@ -161,6 +161,7 @@
     <ClInclude Include="ColorBuffer.h" />
     <ClInclude Include="Framebuffer.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="PostProcess.h" />
     <ClInclude Include="Renderer.h" />
   </ItemGroup>

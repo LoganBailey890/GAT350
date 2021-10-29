@@ -1,11 +1,13 @@
 #pragma once
 #include "Types.h"
 
+
 struct RayCastHit_t
 {
 	float t{ 0 };
 	glm::vec3 point;
 	glm::vec3 normal;
+	class Material* material;
 };
 struct Ray
 {

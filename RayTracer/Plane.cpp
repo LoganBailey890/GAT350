@@ -21,6 +21,7 @@ bool Plane::Hit(const Ray& ray, float tMin, float tMax, RayCastHit_t& hit)
 		hit.t = t;
 		hit.point = ray.pointAt(t);
 		hit.normal = normal;
+		hit.material = material.get();
 		
 		return true;
 	}
