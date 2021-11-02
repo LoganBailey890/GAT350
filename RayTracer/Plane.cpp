@@ -25,4 +25,6 @@ bool Plane::Hit(const Ray& ray, float tMin, float tMax, RayCastHit_t& hit)
 		
 		return true;
 	}
+
+	return false;
 }

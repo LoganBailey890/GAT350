@@ -35,6 +35,7 @@ glm::vec3 Scene::Trace(const Ray& ray, float tMin, float tMax, RayCastHit_t& hit
             return{ 0,0,0 };
         }
     }
+    
     glm::vec3 direction = glm::normalize(ray.direction);
     float t = (direction.y + 1) * 0.5f;
     return glm::lerp(glm::vec3(0.5f, 0.7f, 1.0f), glm::vec3(1, 1, 1), t);

@@ -42,7 +42,7 @@ inline float angle(const glm::vec3& v1, const glm::vec3& v2)
 }
 inline float random01()
 {
-    return rand() / RAND_MAX;
+    return rand() / (float)RAND_MAX;
 }
 inline float random(float min, float max)
 {
@@ -63,4 +63,22 @@ inline glm::vec3 randomInUnitSphere()
 inline glm::vec3 reflect(const glm::vec3& v, const glm::vec3& n)
 {
     return v - (2 * dot(v, n) * n);
+}
+inline glm::vec3 corss(const glm::vec3& v1, const glm::vec3& v2)
+{
+    return glm::vec3{
+        v1.y * v2.z - v1.z * v2.y,
+        v1.z * v1.x - v1.x * v2.z,
+        v1.x * v1.y - v1.y * v2.x
+    };
+}
+inline glm::vec3 randomInUnitDisk()
+{
+    glm::vec3 p;
+    do
+    {
+        p = glm::vec3{ random(-1, 1), random(-1, 1), 0 };
+    } while (glm::length2(p) >= 1);
+
+    return p;
 }

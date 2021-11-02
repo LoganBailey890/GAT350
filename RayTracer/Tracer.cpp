@@ -2,7 +2,7 @@
 #include "Scene.h"
 
 
-void Tracer::Trace(const ColorBuffer& colorBuffer, Scene* scene)
+void Tracer::Trace(const ColorBuffer& colorBuffer, Scene* scene, Camera* camera)
 {
 	float aspectRatio = (colorBuffer.width / (float)colorBuffer.height);
 	for (int y = 0; y < colorBuffer.height; y++)
@@ -13,16 +13,20 @@ void Tracer::Trace(const ColorBuffer& colorBuffer, Scene* scene)
 			for (int sample = 0; sample < samples; sample++)
 			{
 
-				glm::vec2 point;
-				point.x = (x + random01()) / (float)colorBuffer.width;
-				point.y = 1 - ((y +random01()) / (float)colorBuffer.height);
+				//glm::vec2 point;
+				//point.x = (x + random01()) / (float)colorBuffer.width;
+				//point.y = 1 - ((y +random01()) / (float)colorBuffer.height);
 
-				glm::vec3 direction = glm::vec3{ (point * 2.0f) -1.0f , -1 };
-				direction.y /= aspectRatio;
-				direction = glm::normalize(direction);
+				//glm::vec3 direction = glm::vec3{ (point * 2.0f) -1.0f , -1 };
+				//direction.y /= aspectRatio;
+				//direction = glm::normalize(direction);
 
 
-				Ray ray{ {0,0,0},direction };
+				//Ray ray{ {0,0,0},direction };
+				glm::vec2 viewport = camera->ScreenToViewport({ x + random01(), y + random01() });
+				viewport.y = 1 - (viewport.y);
+				Ray ray = camera->ViewportToRay(viewport);
+
 				RayCastHit_t hit;
 				color += scene->Trace(ray, 0.001f, FLT_MAX, hit);
 			}
