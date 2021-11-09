@@ -24,6 +24,7 @@ bool Sphere::Hit(const Ray& ray, float tMin, float tMax, RayCastHit_t& hit)
             hit.point = ray.pointAt(hit.t);
             hit.normal = (hit.point - center) / radius;
             hit.material = material.get();
+            hit.uv = GetSpericalUv(hit.normal);
             return true;
         }
 
@@ -34,6 +35,7 @@ bool Sphere::Hit(const Ray& ray, float tMin, float tMax, RayCastHit_t& hit)
             hit.point = ray.pointAt(hit.t);
             hit.normal = (hit.point - center) / radius;
             hit.material = material.get();
+            hit.uv = GetSpericalUv(hit.normal);
             return true;
         }
     }

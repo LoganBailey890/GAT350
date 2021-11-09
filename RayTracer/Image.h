@@ -4,8 +4,9 @@
 class Image
 {
 public:
-	~Image();
-	bool Load(const std::string& filename, uint8_t alpha = 256);
+	Image() = default;
+	Image(const std::string& filename, uint8_t alpha = 255);
+	bool Load(const std::string& filename, uint8_t alpha = 255);
 	void Flip();
 
 	friend class Framebuffer;

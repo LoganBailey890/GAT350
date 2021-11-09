@@ -4,7 +4,7 @@
 struct ColorBuffer
 {
     ColorBuffer() = default;
-    ColorBuffer(const ColorBuffer & other)
+    ColorBuffer(const ColorBuffer& other)
     {
         width = other.width;
         height = other.height;
